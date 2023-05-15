@@ -15,18 +15,16 @@ def initialiseWindow(window, title, size): #Just made a function because it's us
 
 #Health Bar Section
 class healthBar:
-    healthBarWindow = tk.Tk() #Initialising the healthBarWindow
-    healthBarWindow.protocol("WM_DELETE_WINDOW", doNothing)
     userHealth = 100
 
     def __init__(self):
         pass
 
-    def updateHealthBar(health, user=True, finish=False): #Updates the visual health bar, for both the player and (if needed) the enemy who is represented in green
+    def updateHealthBar(health, user=True, finish=False, first=False): #Updates the visual health bar, for both the player and (if needed) the enemy who is represented in green
         if finish:
             exit()
-        
-        healthBar.healthBarWindow.destroy()
+        if not first:
+            healthBar.healthBarWindow.destroy()
         healthBar.healthBarWindow = tk.Tk()
         if user:
             windowHeight = 100
@@ -50,16 +48,15 @@ class healthBar:
 #Backpack Section
 class BackPack:
     backpack = []
-    backpackWindow = tk.Tk()
-    backpackWindow.protocol("WM_DELETE_WINDOW", doNothing) #Stops the user from being able to alt f4 or click exit on the widget to prevent errors
     def __init__(self):
         pass
     
-    def updateBackPack(finish=False): #Updates the visual list of what the backpack contains
+    def updateBackPack(finish=False, first=False): #Updates the visual list of what the backpack contains
         if finish: #Does nothing if called at the end
             pass
         else:
-            BackPack.backpackWindow.destroy()
+            if not first:
+                BackPack.backpackWindow.destroy()
             BackPack.backpackWindow = tk.Tk()
             initialiseWindow(BackPack.backpackWindow, "Backpack Contents", (200, 800))
             tk.Label(BackPack.backpackWindow, anchor="center", text="Items:", bd=0, bg="black", fg="lightGray", font="MS 30").pack()
