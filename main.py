@@ -18,7 +18,7 @@ def sleep(num=1):
 
 #Initialising Values
 backpack = BackPack
-inputs = ["use", "take", "attack", "run", "ask", "tell", "look", "drop", "north", "south", "east", "west", "yes", "no"] #List of valid inputs
+inputs = ["use", "take", "attack", "run", "ask", "tell", "look", "drop", "north", "south", "east", "west", "yes", "no", "exit"] #List of valid inputs
 health = healthBar
 
 
