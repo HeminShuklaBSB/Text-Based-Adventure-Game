@@ -6,6 +6,7 @@
 from visuals import healthBar, BackPack
 import time
 import os
+import random
 
 #Defining functions for convinience 
 #Just making things faster to call
@@ -32,11 +33,33 @@ def validateInput(inp):
         inp = input("> ")
     return inp
 
+def druid():
+    name = "Immeral"
+    race = "Elf"
+    pclass = "Druid"
+    health = 10
+    weapons = [["Scimitar",random.randint(1,6)],
+               ["Thunderwave",random.randint(2,16)]]
+    print(name, race, pclass, health, weapons)
+
+def ranger():
+    name = "Quarion"
+    race = "Elf"
+    pclass = "Ranger"
+    phealth = 10
+    weapons = [["Longbow", random.randint(1,8)],
+               ["Shortsword", random.randint(1,6)]]
+
+def stonehill():
+    print("Welcome to the Stonehill Inn, the heart of the small town of Phandalin. This inn serves as a reststop for travellers making the long journey towards the Sword Mountains. \n Nestled in the foothills of the Sword Mountains, Phandalin is a quaint little town, home to around 1000 people. It sits at the base of Icespire Peak, which is one of the highest peaks of the mountains. Atop of the summit sits the feared White Dragon of Icespire, who has overrun the Icespire Fort and periodically flies down to attack the village.")
+    print("The Stonehill Inn has a rather modest interior, with wooden pillars haphazardly strewn across the floor, holding up the floor above, which holds the bedrooms. The innkeeper calls over to you and asks")
+
 #Press Start
 input("Press Enter To Start: ")
 cls()
 try:
     #All the Actual Code
+    druid()
     health.updateHealthBar(100)
     backpack.updateBackPack()
     print ("Introduction")
