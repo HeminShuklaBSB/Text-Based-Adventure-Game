@@ -12,7 +12,6 @@ import os
 def cls():
     os.system('cls')
 
-user = character(100, 10)
 def sleep(num=1): 
     #So if you just call sleep() with no parameters it will stop 1 second as the default, but you can also specify more if you want
     time.sleep(num)
@@ -37,6 +36,8 @@ def stonehill():
     print("Welcome to the Stonehill Inn, the heart of the small town of Phandalin. This inn serves as a reststop for travellers making the long journey towards the Sword Mountains. \n Nestled in the foothills of the Sword Mountains, Phandalin is a quaint little town, home to around 1000 people. It sits at the base of Icespire Peak, which is one of the highest peaks of the mountains. Atop of the summit sits the feared White Dragon of Icespire, who has overrun the Icespire Fort and periodically flies down to attack the village.")
     print("The Stonehill Inn has a rather modest interior, with wooden pillars haphazardly strewn across the floor, holding up the floor above, which holds the bedrooms. The innkeeper calls over to you and asks")
 
+classList = ["Druid","Ranger","Barbarian","Paladin",]
+
 #Press Start
 input("Press Enter To Start: ")
 cls()
@@ -44,14 +45,14 @@ try:
     #All the Actual Code
     health.updateHealthBar(100)
     backpack.updateBackPack()
-    print ("Introduction")
-    inp = validateInput(input("> "))
-    backpack.add("Burger")
-    backpack.add("Dagger")
-    backpack.updateBackPack()
-    health.updateHealthBar(25)
-    health.updateHealthBar(75, user=False)
-    inp = validateInput(input("> "))
+    classChoice = ""
+    while classChoice not in classList:
+        print("Class Options:")
+        for i in classList:
+            print(">",i)
+        classChoice = input("Please select a class: ")
+    print("You have selected the",classChoice,"class!")
+
 except Exception as e:
     print ("Sorry there's been an error, we'll restart")
     print (f"Error: {e}")

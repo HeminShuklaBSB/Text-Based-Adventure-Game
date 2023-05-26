@@ -1,0 +1,16 @@
+def druid():
+    name = "Immeral"
+    race = "Elf"
+    pclass = "Druid"
+    phealth = 10
+    weapons = [["Scimitar",random.randint(1,6)],
+               ["Thunderwave",random.randint(2,16)]]
+    print(name, race, pclass, phealth, weapons)
+
+def ranger():
+    name = "Quarion"
+    race = "Elf"
+    pclass = "Ranger"
+    phealth = 10
+    weapons = [["Longbow", random.randint(1,8)],
+               ["Shortsword", random.randint(1,6)]]
