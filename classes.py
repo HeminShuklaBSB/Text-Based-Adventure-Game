@@ -90,4 +90,5 @@ class character:
         self.multiplier = multiplier
 
 
-def attack(user, character)
+def attack(user, character):
+    pass
