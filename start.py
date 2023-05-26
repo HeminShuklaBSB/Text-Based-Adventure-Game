@@ -19,12 +19,12 @@ def sleep(num=1):
 
 #Initialising Values
 backpack = BackPack
-inputs = ["use", "take", "attack", "run", "ask", "tell", "look", "drop", "north", "south", "east", "west", "yes", "no"] #List of valid inputs
+basicInputs = ["use", "take", "attack", "run", "ask", "tell", "look", "drop", "north", "south", "east", "west", "yes", "no"] #List of valid inputs
 health = healthBar
 
 
 #General Functions
-def validateInput(inp): 
+def validateInput(inp, inputs=basicInputs): 
     #I suspect that this will have to be edited soon, but until then it's the idea that counts, you get it
     while inp not in inputs:
         if inp != "":
@@ -62,7 +62,6 @@ finally:
     #(and there is an input at some point in front of it)
     #This should allow it to keep being called as many times as I need 
     #It should also only run when the script is over or when there is an error
-    sleep()
     cls()
     backpack.updateBackPack(finish=True)
     health.updateHealthBar(input("Press Enter To Finish The Game: "), finish=True)

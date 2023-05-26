@@ -90,5 +90,13 @@ class character:
         self.multiplier = multiplier
 
 
-def attack(user, character):
+
+#Fight section
+
+
+def fight(user, character):
+    while user.health > 0 or character.health > 0:
+        def attack(user, character):
+            character.health -= (user.attack - character.defense)
+                    #TODO
     pass
