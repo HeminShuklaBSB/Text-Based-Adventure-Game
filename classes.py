@@ -82,12 +82,15 @@ class BackPack:
 
 
 class character:
-    def __init__(self, health=100, attack=10, defense=10, specialAttacks=False, multiplier=0):
+    def __init__(self, health=100, attackMin = 0, attackMax = 0, attack = 0, defense=10, specialAttacks=False, multiplier=0, speed = 0):
         self.health = health
-        self.attack = attack + multiplier
+        self.attackMin = attackMin
+        self.attackMax = attackMax
         self.defense = defense
         self.specialAttacks = specialAttacks
         self.multiplier = multiplier
+        self.speed = speed
+        self.attack = random.randint(attackMin,attackMax) + multiplier
 
 
 
