@@ -1,9 +1,10 @@
 #Notes
 #If possible please keep the updateBackpack() before the updateHealth(), it just looks better, although I am working on having them "spawn in" if you will in better spots
 
-
+#VERY IMPORTANT
+#To run the game you must install tkinter and playsound using pip install <name of module> 
 #Imports
-from classes import healthBar, BackPack, character
+from classes import healthBar, BackPack, character, map
 import time
 import os
 
@@ -21,6 +22,12 @@ backpack = BackPack
 basicInputs = ["use", "take", "attack", "run", "ask", "tell", "look", "drop", "n", "s", "e", "w", "yes", "no"] #List of valid inputs
 health = healthBar
 
+name = input()
+while name == "":
+    print ("Please enter a name")
+    name = input()
+
+user = character(name)
 
 #General Functions
 def validateInput(inp, inputs=basicInputs): 
@@ -100,6 +107,8 @@ classStats = [["Class","Race","Health","Weapon Name","AttackMin","AttackMax","De
               ["Barbarian","Elf",14,"Greataxe",1,12,14,2,15],
               ["Paladin","Elf",10,"Longsword",1,8,18,2,15],
               ]
+
+
 
 #Press Start
 input("Press Enter To Start: ")
