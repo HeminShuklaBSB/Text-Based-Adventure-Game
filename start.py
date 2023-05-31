@@ -30,6 +30,7 @@ def validateInput(inp, inputs=basicInputs):
             print ("I'm sorry, I didn't quite understand that.")
             print ("Please try again")
         inp = input("> ")
+    inp = inp[0].lower()
     return inp
 
 def stonehill():
@@ -40,15 +41,57 @@ def stonehill():
     print("The Stonehill Inn has a rather modest interior, with wooden pillars haphazardly strewn across the floor, holding up the floor above, which holds the bedrooms. The innkeeper calls over to you and asks, \n'Oi! You! You look like a traveller. You heard of that Harvin Wester in town? He's the townmaster, and I heard he's looking for an adventurer to do some quests for him. Heard he's paying out big time!'")
     input("Press enter to continue: ")
     cls()
-    print("What would you like to do? Explore the upstairs of Stonehill Inn? (up), Go out the door to the main square to the south (s)")
-    inp = ""
-    validateInput()
-    if inp == "up":
-        stonehillUp()
+    input("Press enter to go outside: ")
+    phandalinSquare()
+
+def phandalinSquare():
+    cls()
+    print("Phandalin Square is, as you would experct of a small town, not too busy or big, though a few stalls line the outside. You see a sign pointing different ways in the centre of the square next to a fountain.")
+    input("Press enter to investigate: ")
+    cls()
+    print("The sign has three points. The first, which points North, reads 'Triboar Trail'; the second, which points East, reads 'Townmaster's house', and the third, which points West, reads 'Gnomengarde'")
+    print("Which way would you like to go? (n,e,s)")
+    inp = validateInput(input(),inputs=["n","e","s"])
+    if inp == "n":
+        triboar()
+    elif inp == "e":
+        townmaster()
     elif inp == "s":
+        gnomengarde()
+
+def noticeBoard(inp, questGnome, questTri, questDragon):
+    questGnome = False
+    questTri = False
+    questDragon = False
+    if inp == "1":
+        print("The first paper reads 'The King of Gnomengarde, Korboz, calls for help to the south of Phandalin. A mimic is terrorising their cave and it needs to be destroyed.'")
+        input("Press enter to continue: ")
+        questGnome = True
+        return questGnome
+    elif inp == "2":
+        print("Manticore")
+        input("Press enter to continue: ")
+        questTri = True
+        return questTri
+    elif inp == "3":
+        print("Dragon")
+        input("Press enter to continue: ")
+        return questDragon
+
+def townmaster():
+    print("You walk east from the main square towards Townmaster Harvin Wester's house. As you arrive at this house, there is a notice board outside, which has three pieces of paper on it. Which would you like to read? (1,2,3)")
+    inp = validateInput(input(),inputs=["1","2","3"])
+    noticeBoard(inp)
+
+def triboar(questTri):
+    if questTri != True:
+        "Inactive Quest: returning to main square..."
         phandalinSquare()
     else:
-        print 
+        print("")
+        
+
+
 classList = ["Druid","Ranger","Barbarian","Paladin",]
 
 classStats = [["Class","Race","Health","Weapon Name","AttackMin","AttackMax","Defense","Multiplier","Speed"],
