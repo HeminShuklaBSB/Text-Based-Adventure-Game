@@ -1,5 +1,7 @@
 import tkinter as tk
 import random
+from playsound import playsound
+
 def doNothing():
     #Literally does nothing but please don't delete it 
     #It is used so that the user can't click exit 
@@ -43,9 +45,6 @@ class healthBar:
             healthBarMain.create_rectangle(50, 100, 50 + health * 4, 140, fill="green")
 
         healthBarMain.pack()
-        
-
-
 
 #Backpack Section
 class BackPack:
@@ -81,8 +80,10 @@ class BackPack:
             print (f"Error: {e}")
 
 
+#Character Section
 class character:
-    def __init__(self, health=100, attackMin = 0, attackMax = 0, attack = 0, defense=10, specialAttacks=False, multiplier=0, speed = 0):
+    def __init__(self, name, health=100, attack=0, attackMin = 10, attackMax = 20, defense=10, specialAttacks=False, multiplier=0, speed = 0):
+        self.name = name
         self.health = health
         self.attackMin = attackMin
         self.attackMax = attackMax
@@ -90,16 +91,28 @@ class character:
         self.specialAttacks = specialAttacks
         self.multiplier = multiplier
         self.speed = speed
-        self.attack = random.randint(attackMin,attackMax) + multiplier
-
-
+        self.attack = attack
+        self.debug = [self.name, self.health, self.attack]
 
 #Fight section
+def attack(user, character):
+    user.attack = random.randint(user.attackMin,user.attackMax) + user.multiplier
+    character.health -= (user.attack - character.defense)
 
-
+def checkWinner(user, character):
+    #print (f"{user.name}: {user.health} {character.name}: {character.health}")
+    if user.health <= 0:
+        return (character.name)
+    elif character.health <= 0:
+        return (user.name)
+    return 0
+    
 def fight(user, character):
-    while user.health > 0 or character.health > 0:
-        def attack(user, character):
-            character.health -= (user.attack - character.defense)
-                    #TODO
-    pass
+    while user.health > 0 and character.health > 0:
+        attack(user, character)
+        if checkWinner(user, character) != 0:
+            break
+        attack(character, user)
+        if checkWinner(user, character) != 0:
+            break
+    return checkWinner(user, character)
